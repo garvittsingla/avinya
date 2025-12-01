@@ -11,7 +11,7 @@ interface TicTacToeProps {
 type Player = 'X' | 'O' | null;
 type Board = Player[];
 
-function TicTacToe({ username, roomslug, sendGameState, gameState, onBack }: TicTacToeProps) {
+function TicTacToe({ username,  sendGameState, gameState, onBack }: TicTacToeProps) {
   const [board, setBoard] = useState<Board>(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
   const [playerSymbol, setPlayerSymbol] = useState<'X' | 'O' | null>(null);
