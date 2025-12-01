@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsc && node dist/index.js",
-    "build": "tsc -b",
+    "build": "npm install && tsc -b",
     "start": "node dist/index.js"
   },
   "keywords": [],
@@ -13,9 +13,9 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "ws": "^8.14.2",
     "@types/node": "^22.0.0",
     "@types/ws": "^8.5.10",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "ws": "^8.14.2"
   }
 }
