@@ -102,7 +102,7 @@ interface UseRoomSocketReturn {
   currentVideo: TVVideoData | null;
 }
 
-const WS_URL = "ws://localhost:8080";
+const WS_URL = "https://avinya1.onrender.com/";
 
 export const useRoomSocket = (): UseRoomSocketReturn => {
   const [isConnected, setIsConnected] = useState(false);

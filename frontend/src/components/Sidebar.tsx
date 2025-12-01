@@ -80,14 +80,11 @@ export default function Sidebar({
 
   return (
     <div className="w-full bg-[#392e2b] h-full flex flex-col border-l-4 border-[#5d4037] shadow-lg text-[#e8d4b7]">
-      {/* Connection status indicator */}
       <div className={`px-2 py-1 text-xs ${isConnected ? 'bg-green-800' : 'bg-red-800'}`}>
         {isConnected ? '● Connected to chat' : '○ Disconnected - trying to reconnect...'}
       </div>
 
-      {/* Top section (3/5 height) */}
       <div className="h-3/5 flex flex-col">
-        {/* Tabs */}
         <div className="flex border-b-4 border-[#5d4037]">
           <button
             className={`flex-1 py-2 px-4 text-center transition-colors ${
@@ -113,15 +110,14 @@ export default function Sidebar({
           </button>
         </div>
 
-        {/* Content area */}
         <div className="flex-grow overflow-auto p-3 bg-[#2e2421]">
           {activeTab === 'messages' && (
-            <div className="messages-container overflow-y-auto max-h-full space-y-3">
+            <div className="messages-container overflow-y-auto max-h-full space-y-3 px-2">
               {messages.map((message, index) => (
                 <div 
                   key={index} 
-                  className={`message border-2 border-[#5d4037] bg-[#3e322f] p-2 rounded-lg ${
-                    message.isOwnMessage ? 'ml-4 border-l-4 border-l-[#cb803e]' : 'mr-4'
+                  className={`message border-2 border-[#5d4037] bg-[#3e322f] p-3 rounded-lg ${
+                    message.isOwnMessage ? 'ml-6 border-l-4 border-l-[#cb803e]' : 'mr-6'
                   }`}
                 >
                   <div className="message-header flex justify-between items-center">
@@ -149,7 +145,6 @@ export default function Sidebar({
 
           {activeTab === 'members' && (
             <div className="grid grid-cols-1 gap-2">
-              {/* Current user first */}
               <div className="member-card p-3 border-2 border-[#4caf50] bg-[#3e322f] rounded-lg flex items-center">
                 <div className="w-10 h-10 flex items-center justify-center bg-[#cb803e] rounded-lg text-xl mr-3">
                   👤
@@ -163,7 +158,6 @@ export default function Sidebar({
                 )}
               </div>
 
-              {/* Other members */}
               {membersList
                 .filter(member => member.username !== username)
                 .map(member => (
@@ -193,7 +187,6 @@ export default function Sidebar({
           )}
         </div>
 
-        {/* Chat input */}
         {activeTab === 'messages' && (
           <form
             className="chat-input-container p-3 bg-[#3e322f] border-t-4 border-[#5d4037]"
@@ -223,7 +216,6 @@ export default function Sidebar({
         )}
       </div>
 
-      {/* YouTube section (2/5 height) */}
       <div className="h-2/5 border-t-4 border-[#5d4037] flex flex-col">
         <div className="bg-[#392e2b] p-2 border-b-2 border-[#5d4037]">
           <h3 className="font-bold text-[#ffc107] px-2 flex items-center gap-2">
