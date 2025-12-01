@@ -1,0 +1,261 @@
+/* Developers Page Minimal Pixel Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    filter: brightness(0.7) contrast(1.1);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+img{
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    width: 200px;
+}
+.back-btn {
+    display: inline-block;
+    background: #ff0080;
+    border: 2px solid #ff0080;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-bottom: 2rem;
+}
+
+.back-btn:hover {
+    background: transparent;
+    transform: translateX(-3px);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: #00ff00;
+    letter-spacing: 6px;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.page-subtitle {
+    font-size: 0.7rem;
+    color: #ff00ff;
+    letter-spacing: 2px;
+}
+
+.developers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+}
+
+.developer-card {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #00ffff;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.developer-card:hover {
+    transform: translateY(-5px);
+    border-color: #ff00ff;
+    box-shadow: 0 5px 20px rgba(255, 0, 255, 0.3);
+}
+
+.dev-photo-placeholder {
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(45deg, #333, #555);
+    margin: 0 auto 1.5rem;
+    position: relative;
+    border: 3px solid #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.photo-text {
+    font-size: 1.2rem;
+    color: #00ffff;
+    letter-spacing: 2px;
+}
+
+.pixel-border {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ff00) border-box;
+    z-index: -1;
+}
+
+.dev-info {
+    text-align: center;
+}
+
+.dev-name {
+    font-size: 0.8rem;
+    color: #00ffff;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.dev-role {
+    font-size: 0.6rem;
+    color: #ff00ff;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.dev-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.skill {
+    background: #333;
+    color: #ffff00;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.5rem;
+    border: 1px solid #ffff00;
+    letter-spacing: 1px;
+}
+
+.dev-quote {
+    font-size: 0.5rem;
+    color: #666;
+    font-style: italic;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+}
+
+.team-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #00ff00;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.stat-item:hover {
+    border-color: #ffff00;
+    transform: scale(1.05);
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    color: #00ff00;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.stat-label {
+    font-size: 0.5rem;
+    color: #ccc;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .developers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .developers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+    
+    .developer-card {
+        padding: 1.5rem;
+    }
+    
+    .dev-photo-placeholder {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .photo-text {
+        font-size: 1rem;
+    }
+    
+    .team-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

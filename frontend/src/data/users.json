@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "VOXEL_KING",
+      "email": "voxelking@voxelstudios.com",
+      "password": "pixel2025"
+    },
+    {
+      "id": 2,
+      "username": "PIXEL_MASTER",
+      "email": "pixelmaster@voxelstudios.com",
+      "password": "master123"
+    },
+    {
+      "id": 3,
+      "username": "admin",
+      "email": "admin@voxelstudios.com",
+      "password": "admin"
+    },
+    {
+      "id": 4,
+      "username": "player1",
+      "email": "player1@gmail.com",
+      "password": "password"
+    },
+    {
+      "id": 5,
+      "username": "CUBE_CRUSHER",
+      "email": "cubecrusher@voxelstudios.com",
+      "password": "crush2025"
+    }
+  ]
+}

@@ -1,7 +1,13 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import GamePage from './pages/GamePage'
-import './App.css'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import HowToPlay from './pages/HowToPlay'
+import Leaderboard from './pages/Leaderboard'
+import Developers from './pages/Developers'
+import Settings from './pages/Settings'
+
 
 function HomePage() {
   const [username, setUsername] = useState('')
@@ -113,9 +119,9 @@ function GameWrapper() {
   }
 
   return (
-    <GamePage 
-      username={username} 
-      roomslug={roomslug} 
+    <GamePage
+      username={username}
+      roomslug={roomslug}
       onLeave={handleLeave}
     />
   )
@@ -123,12 +129,18 @@ function GameWrapper() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/gamepage" element={<HomePage />} />
         <Route path="/game/:roomslug" element={<GameWrapper />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/howtoplay" element={<HowToPlay />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/developers" element={<Developers />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   )
 }
 

@@ -1,0 +1,297 @@
+/* Login Page Minimal Pixel Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: #000;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    filter: brightness(0.7) contrast(1.1);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0, 0, 0, 0.7); */
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.back-btn {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background: rgba(255, 0, 128, 0.8);
+    border: 2px solid #ff0080;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background: #ff0080;
+    transform: translateX(-3px);
+    box-shadow: 0 0 10px rgba(255, 0, 128, 0.6);
+}
+
+.login-container {
+    background: rgba(0, 0, 0, 0.95);
+    border: 3px solid #00ffff;
+    padding: 3rem;
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+.login-container::before {
+    display: none;
+}
+
+.page-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.login-form {
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    color: #00ffff;
+    font-size: 0.6rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1.2rem;
+    background: #0a0a0a;
+    border: 2px solid #333;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    transition: border-color 0.2s ease;
+    letter-spacing: 1px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #00ffff;
+    background: #000;
+}
+
+.input-group input::placeholder {
+    color: #666;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.action-btn {
+    padding: 1.2rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    border: 2px solid;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.action-btn.primary {
+    border-color: #00ffff;
+    color: #00ffff;
+}
+
+.action-btn.primary:hover {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: #fff;
+}
+
+.action-btn.secondary {
+    border-color: #ff00ff;
+    color: #ff00ff;
+}
+
+.action-btn.secondary:hover {
+    background: rgba(255, 0, 255, 0.2);
+    border-color: #fff;
+}
+
+.guest-btn {
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid #666;
+    color: #666;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.guest-btn:hover {
+    border-color: #999;
+    color: #999;
+}
+
+.server-info {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #333;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-size: 0.6rem;
+}
+
+.info-label {
+    color: #999;
+    letter-spacing: 1px;
+}
+
+.info-value {
+    color: #00ffff;
+    letter-spacing: 1px;
+}
+
+.info-value.online {
+    color: #00ff00;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 20px 30px;
+    border-radius: 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: #fff;
+    z-index: 10000;
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #00ff88, #00cc6a);
+    border: 2px solid #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.notification.error {
+    background: linear-gradient(135deg, #ff0055, #cc0044);
+    border: 2px solid #ff0055;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+}
+
+.notification.info {
+    background: linear-gradient(135deg, #00d4ff, #0099cc);
+    border: 2px solid #00d4ff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.shake {
+    animation: shake 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .page-title {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    
+    .back-btn {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.5rem;
+    }
+    
+    .notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        font-size: 10px;
+        padding: 15px 20px;
+    }
+}
