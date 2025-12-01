@@ -17,6 +17,7 @@ function TicTacToe({ username,  sendGameState, gameState, onBack }: TicTacToePro
   const [playerSymbol, setPlayerSymbol] = useState<'X' | 'O' | null>(null);
   const [opponent, setOpponent] = useState<string | null>(null);
   const [winner, setWinner] = useState<Player | 'draw' | null>(null);
+  console.log(roomslug)
 
   // Handle incoming game state from other players
   useEffect(() => {
@@ -117,28 +118,32 @@ function TicTacToe({ username,  sendGameState, gameState, onBack }: TicTacToePro
       <button
         onClick={() => handleClick(index)}
         style={{
-          width: '80px',
-          height: '80px',
-          fontSize: '40px',
+          width: '90px',
+          height: '90px',
+          fontSize: '48px',
           fontWeight: 'bold',
           background: value 
-            ? 'linear-gradient(145deg, #1a1a2e, #0f0f1a)'
-            : 'linear-gradient(145deg, #2a2a3e, #1a1a2e)',
-          border: '2px solid #3a3a4a',
-          borderRadius: '8px',
+            ? '#d4a574'
+            : '#e8c4a0',
+          border: '4px solid #8b6f47',
+          borderRadius: '4px',
           cursor: opponent && playerSymbol && !board[index] && !winner ? 'pointer' : 'default',
-          color: value === 'X' ? '#e94560' : '#00ffff',
-          textShadow: value ? `0 0 10px ${value === 'X' ? '#e94560' : '#00ffff'}` : 'none',
-          transition: 'all 0.2s ease'
+          color: value === 'X' ? '#d9534f' : '#5cb85c',
+          textShadow: value ? '2px 2px 4px rgba(0,0,0,0.3)' : 'none',
+          transition: 'all 0.15s ease',
+          boxShadow: value ? 'inset 0 2px 4px rgba(0,0,0,0.2)' : 'inset 0 -2px 4px rgba(0,0,0,0.1)',
+          fontFamily: 'monospace'
         }}
         onMouseEnter={(e) => {
-          if (!board[index] && !winner) {
-            e.currentTarget.style.background = 'linear-gradient(145deg, #3a3a4e, #2a2a3e)';
+          if (!board[index] && !winner && opponent && playerSymbol) {
+            e.currentTarget.style.background = '#f5d5b0';
+            e.currentTarget.style.transform = 'scale(1.05)';
           }
         }}
         onMouseLeave={(e) => {
           if (!board[index]) {
-            e.currentTarget.style.background = 'linear-gradient(145deg, #2a2a3e, #1a1a2e)';
+            e.currentTarget.style.background = '#e8c4a0';
+            e.currentTarget.style.transform = 'scale(1)';
           }
         }}
       >
@@ -154,7 +159,14 @@ function TicTacToe({ username,  sendGameState, gameState, onBack }: TicTacToePro
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      gap: '20px'
+      gap: '24px',
+      padding: '20px',
+      background: 'linear-gradient(180deg, #f4d8b8 0%, #e8c4a0 100%)',
+      borderRadius: '12px',
+      border: '6px solid #8b6f47',
+      boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
+      minHeight: '600px',
+      overflowY: 'hidden'
     }}>
       {/* Header */}
       <div style={{
@@ -167,47 +179,82 @@ function TicTacToe({ username,  sendGameState, gameState, onBack }: TicTacToePro
         <button
           onClick={onBack}
           style={{
-            background: 'transparent',
-            border: '2px solid #666',
-            borderRadius: '8px',
-            padding: '8px 16px',
-            color: '#fff',
+            background: '#d4a574',
+            border: '3px solid #8b6f47',
+            borderRadius: '6px',
+            padding: '10px 20px',
+            color: '#3d2f1f',
             cursor: 'pointer',
-            fontSize: '14px'
+            fontSize: '16px',
+            fontWeight: 'bold',
+            boxShadow: '0 3px 0 #6d5437',
+            transition: 'all 0.1s ease'
+          }}
+          onMouseDown={(e) => {
+            e.currentTarget.style.transform = 'translateY(2px)';
+            e.currentTarget.style.boxShadow = '0 1px 0 #6d5437';
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 3px 0 #6d5437';
           }}
         >
           ← Back
         </button>
         <h2 style={{
-          fontSize: '24px',
-          color: '#00ffff',
-          textShadow: '0 0 10px #00ffff'
+          fontSize: '32px',
+          color: '#3d2f1f',
+          textShadow: '2px 2px 0 rgba(255,255,255,0.5)',
+          fontWeight: 'bold',
+          letterSpacing: '2px',
+          fontFamily: 'monospace'
         }}>
-          Tic Tac Toe
+          TIC TAC TOE
         </h2>
-        <div style={{ width: '80px' }} />
+        <div style={{ width: '100px' }} />
       </div>
 
       {/* Game status */}
       <div style={{
-        padding: '12px 24px',
-        background: 'linear-gradient(145deg, #1a1a2e, #0f0f1a)',
-        borderRadius: '12px',
-        border: '2px solid #3a3a4a'
+        padding: '20px 32px',
+        background: '#d4a574',
+        borderRadius: '8px',
+        border: '4px solid #8b6f47',
+        boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.2)',
+        minWidth: '350px',
+        textAlign: 'center'
       }}>
         {!opponent ? (
           <div style={{ textAlign: 'center' }}>
-            <p style={{ color: '#888', marginBottom: '10px' }}>Waiting for opponent...</p>
+            <p style={{ 
+              color: '#5d4a37', 
+              marginBottom: '12px',
+              fontSize: '16px',
+              fontWeight: 'bold'
+            }}>
+              Waiting for opponent...
+            </p>
             <button
               onClick={handleJoinGame}
               style={{
-                background: 'linear-gradient(145deg, #e94560, #c73e54)',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '10px 24px',
+                background: '#d9534f',
+                border: '3px solid #a94442',
+                borderRadius: '6px',
+                padding: '12px 28px',
                 color: '#fff',
                 cursor: 'pointer',
-                fontWeight: 'bold'
+                fontWeight: 'bold',
+                fontSize: '16px',
+                boxShadow: '0 4px 0 #8b3a39',
+                transition: 'all 0.1s ease'
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = 'translateY(2px)';
+                e.currentTarget.style.boxShadow = '0 2px 0 #8b3a39';
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 0 #8b3a39';
               }}
             >
               Join Game
@@ -216,32 +263,52 @@ function TicTacToe({ username,  sendGameState, gameState, onBack }: TicTacToePro
         ) : winner ? (
           <div style={{ textAlign: 'center' }}>
             <p style={{ 
-              color: winner === 'draw' ? '#ffaa00' : (winner === playerSymbol ? '#00ff88' : '#e94560'),
-              fontSize: '20px',
-              fontWeight: 'bold'
+              color: winner === 'draw' ? '#f0ad4e' : (winner === playerSymbol ? '#5cb85c' : '#d9534f'),
+              fontSize: '24px',
+              fontWeight: 'bold',
+              marginBottom: '12px',
+              textShadow: '2px 2px 0 rgba(0,0,0,0.2)'
             }}>
-              {winner === 'draw' ? "It's a Draw!" : (winner === playerSymbol ? '🎉 You Win!' : '😢 You Lose!')}
+              {winner === 'draw' ? "🤝 It's a Draw!" : (winner === playerSymbol ? '🎉 You Win!' : '😢 You Lose!')}
             </p>
             <button
               onClick={handleReset}
               style={{
-                marginTop: '10px',
-                background: 'linear-gradient(145deg, #00ffff, #00cccc)',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '8px 20px',
-                color: '#000',
+                background: '#5cb85c',
+                border: '3px solid #4cae4c',
+                borderRadius: '6px',
+                padding: '10px 24px',
+                color: '#fff',
                 cursor: 'pointer',
-                fontWeight: 'bold'
+                fontWeight: 'bold',
+                fontSize: '16px',
+                boxShadow: '0 4px 0 #3d8b3d',
+                transition: 'all 0.1s ease'
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = 'translateY(2px)';
+                e.currentTarget.style.boxShadow = '0 2px 0 #3d8b3d';
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 0 #3d8b3d';
               }}
             >
               Play Again
             </button>
           </div>
         ) : (
-          <p style={{ color: isMyTurn ? '#00ff88' : '#888' }}>
-            {isMyTurn ? "Your turn!" : `Waiting for ${opponent}...`}
-            <span style={{ marginLeft: '10px', color: playerSymbol === 'X' ? '#e94560' : '#00ffff' }}>
+          <p style={{ 
+            color: isMyTurn ? '#3d8b3d' : '#5d4a37',
+            fontSize: '18px',
+            fontWeight: 'bold'
+          }}>
+            {isMyTurn ? "🎮 Your turn!" : `⏳ Waiting for ${opponent}...`}
+            <span style={{ 
+              marginLeft: '12px', 
+              color: playerSymbol === 'X' ? '#d9534f' : '#5cb85c',
+              fontSize: '16px'
+            }}>
               (You: {playerSymbol})
             </span>
           </p>
@@ -252,11 +319,12 @@ function TicTacToe({ username,  sendGameState, gameState, onBack }: TicTacToePro
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '8px',
-        padding: '16px',
-        background: 'linear-gradient(145deg, #0a0a15, #0f0f1a)',
-        borderRadius: '16px',
-        boxShadow: '0 0 30px rgba(0, 255, 255, 0.1)'
+        gap: '10px',
+        padding: '20px',
+        background: '#c89968',
+        borderRadius: '8px',
+        border: '6px solid #8b6f47',
+        boxShadow: 'inset 0 4px 12px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.2)'
       }}>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => renderCell(i))}
       </div>
@@ -265,11 +333,16 @@ function TicTacToe({ username,  sendGameState, gameState, onBack }: TicTacToePro
       {opponent && (
         <div style={{
           display: 'flex',
-          gap: '20px',
-          fontSize: '14px'
+          gap: '32px',
+          fontSize: '16px',
+          fontWeight: 'bold',
+          padding: '12px 24px',
+          background: '#d4a574',
+          borderRadius: '8px',
+          border: '3px solid #8b6f47'
         }}>
-          <span style={{ color: '#e94560' }}>❌ {playerSymbol === 'X' ? username : opponent}</span>
-          <span style={{ color: '#00ffff' }}>⭕ {playerSymbol === 'O' ? username : opponent}</span>
+          <span style={{ color: '#d9534f' }}>❌ {playerSymbol === 'X' ? username : opponent}</span>
+          <span style={{ color: '#5cb85c' }}>⭕ {playerSymbol === 'O' ? username : opponent}</span>
         </div>
       )}
     </div>
