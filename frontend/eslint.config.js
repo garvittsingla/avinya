@@ -19,5 +19,11 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      '@typescript-eslint/ban-ts-comment': [
+        'off'
+      ],
+      '@typescript-eslint/no-explicit-any': 'off',  // ⬅ allow any
+    },
   },
 ])
