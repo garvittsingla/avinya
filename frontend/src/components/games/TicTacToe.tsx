@@ -17,7 +17,7 @@ function TicTacToe({ username,  sendGameState, gameState, onBack }: TicTacToePro
   const [playerSymbol, setPlayerSymbol] = useState<'X' | 'O' | null>(null);
   const [opponent, setOpponent] = useState<string | null>(null);
   const [winner, setWinner] = useState<Player | 'draw' | null>(null);
-  console.log(roomslug)
+  // console.log(roomslug)
 
   // Handle incoming game state from other players
   useEffect(() => {
