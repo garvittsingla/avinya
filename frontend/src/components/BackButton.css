@@ -1,0 +1,21 @@
+.back-btn {
+  display: inline-block;
+  background: rgba(255, 0, 128, 0.8);
+  border: 2px solid #ff0080;
+  padding: 0.8rem 1.5rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+.back-btn:hover {
+  background: #ff0080;
+  transform: translateX(-3px);
+  box-shadow: 0 0 10px rgba(255, 0, 128, 0.6);
+}

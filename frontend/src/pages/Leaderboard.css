@@ -1,0 +1,293 @@
+/* Leaderboard Page Minimal Pixel Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    filter: brightness(0.7);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0, 0, 0, 0.8); */
+    z-index: -1;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.back-btn {
+    display: inline-block;
+    background: #ff0080;
+    border: 2px solid #ff0080;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-bottom: 2rem;
+}
+
+.back-btn:hover {
+    background: transparent;
+    transform: translateX(-3px);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: #ffff00;
+    letter-spacing: 6px;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.page-subtitle {
+    font-size: 0.7rem;
+    color: #00ffff;
+    letter-spacing: 2px;
+}
+
+.leaderboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.leaderboard-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tab {
+    background: transparent;
+    border: 2px solid #666;
+    color: #666;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab.active,
+.tab:hover {
+    border-color: #00ffff;
+    color: #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+}
+
+.leaderboard-content {
+    margin-bottom: 2rem;
+}
+
+.podium {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    height: 200px;
+}
+
+.podium-place {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+    min-width: 150px;
+}
+
+.podium-place.first {
+    border-color: #ffff00;
+    height: 160px;
+    order: 2;
+}
+
+.podium-place.second {
+    border-color: #ccc;
+    height: 130px;
+    order: 1;
+}
+
+.podium-place.third {
+    border-color: #cd7f32;
+    height: 100px;
+    order: 3;
+}
+
+.place-number {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: inherit;
+}
+
+.player-name {
+    font-size: 0.6rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.player-score {
+    font-size: 0.8rem;
+    color: #00ff00;
+    letter-spacing: 1px;
+}
+
+.crown {
+    position: absolute;
+    top: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+}
+
+.rankings-list {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #333;
+    padding: 1rem;
+}
+
+.ranking-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-left: 3px solid #333;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.ranking-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.rank {
+    color: #666;
+    font-size: 0.7rem;
+    min-width: 3rem;
+}
+
+.name {
+    color: #fff;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.score {
+    color: #00ff00;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+}
+
+.your-rank {
+    margin-top: 2rem;
+}
+
+.rank-card {
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid #00ffff;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.your-position,
+.your-score {
+    font-size: 0.7rem;
+    color: #00ffff;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .podium {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        gap: 1rem;
+    }
+    
+    .podium-place {
+        width: 100%;
+        max-width: 300px;
+        height: auto !important;
+        order: initial !important;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+    
+    .leaderboard-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tab {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .page-title {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+    
+    .ranking-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .rank-card {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
